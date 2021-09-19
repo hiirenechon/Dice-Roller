@@ -1,0 +1,40 @@
+package com.company;
+
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+
+    public static void
+    main(String[] args) {
+        System.out.println("Welcome to Dice Roller");
+        String answer = "y";
+        String yes = "y";
+        String Yes = "Y";
+        String no = "n";
+        String No = "N";
+        Scanner input = new Scanner(System.in);
+        while (answer.equals(yes) || answer.equals(Yes)) {
+            System.out.println("Please enter the number of dice and sides for each die\nexample: number of dice = 2  number of sides = 3  enter '2d3' \n");
+            String str = input.next();
+            String[] parts = str.split("d", 2);
+            String string1 = parts[0];
+            int count = Integer.parseInt(string1);
+            String string2 = parts[1];
+            int sides = Integer.parseInt(string2);
+            for (int i = 0; i < count; i++) {
+                Random rand = new Random();
+                int dice = rand.nextInt(sides) + 1;
+                System.out.println("You rolled a " + dice + "\n");
+            }
+
+            System.out.println("Would you like to roll again? (y/n) ");
+            answer = input.next();
+            while (!answer.equals(yes) && !answer.equals(Yes) && !answer.equals(no) && !answer.equals(No)) {
+                System.out.println("Invalid input: Would you like to roll again? (y/n) ");
+                answer = input.next();
+            }
+        }
+
+    }
+}
